@@ -1,3 +1,4 @@
+#ignore all files generated for hw9 and keep only neccesary files
 hw9/*
 !hw9/Homework9.pdf
 !hw9/Homework9.tex
