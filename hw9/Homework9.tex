@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{array}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{multirow}
 \usepackage[vcentermath]{youngtab}
 \newcommand{\rowTwo}[7]{
@@ -218,5 +219,23 @@ Language $\mathcal{A}$:}
 \end{center}
 \paragraph{In conclusion, since row[6] does not contain start variable $S$, then string $bababb \notin L(\mathcal{A})$.}
 
+\section*{Problem \#3:}
+\paragraph{Give Turing machine transition table for a Turing Machine that accepts language: }
+\begin{equation*}
+    \{ x \in \{0,1\}^*\;|\;x \textnormal{ begins with 0 and has as many 1 to 0 transitions as 0 to 1 transitions}\}
+\end{equation*}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{C0C0C0} 
+    \cellcolor[HTML]{EFEFEF}      & $0$     & $1$     & B \\ \hline
+    \cellcolor[HTML]{C0C0C0} $p_0$&  R      &  $p_1$R & Accept \\ \hline
+    \cellcolor[HTML]{C0C0C0} $p_1$&  $p_0$R &  R      & Reject \\ \hline
+    \end{tabular}
+\end{table}
+
+\paragraph{This transition table shows that the turing machine will read each symbol and move states only when there is a change in input. It will accept if there is never a transition or if there is transition from 0-to-1 and then from 1-to-0. If there is a transition from 0-to-1 and the string ends there, the machine rejects such string.}
 
 \end{document}
