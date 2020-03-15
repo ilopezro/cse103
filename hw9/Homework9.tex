@@ -1,15 +1,14 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{amsmath}
+\usepackage{array}
+\usepackage{multirow}
 \usepackage[vcentermath]{youngtab}
 \newcommand{\rowTwo}[7]{
     row[#1][#2] will look at string $#3#4$. $#3#4$ contains substrings $#3$ and $#4$, which are derived from $#5$ and $#6$ in that order. The cartesian product is $#5#6$. $#5#6$ is found in grammar $\mathcal{A}$ through $#7$. Therefore, row[#1][#2] = $#7$.    
 }
-
-% \newco
-
-
 
 \title{CSE103 Homework 9}
 \author{Isai Lopez Rodas \\[1em] ilopezro $|$ 1605542}
@@ -107,6 +106,117 @@ Language $\mathcal{A}$:}
 
 \paragraph{In conclusion, since row[6] contains the start variable $S$, then the string $babaab \in L(\mathcal{A})$.}
 \clearpage
+
 \section*{Problem \#2: Is string $bababb \in L(\mathcal{A})$?}
+\paragraph{I will follow the same procedure as I did for problem \#1. For the sake of simplicity, I will give only important and relevant information.}
+
+\begin{center}
+    \young(6\hfill,5\hfill \hfill,4\hfill \hfill \hfill,3\hfill \hfill \hfill \hfill,2\hfill \hfill \hfill \hfill \hfill,1\hfill \hfill \hfill \hfill \hfill \hfill,\hfill bababb) \\
+    Table 8: Initial Unfilled Table
+\end{center}
+
+\paragraph{Again, row[1] contains the derivations of the letters directly below each box.}
+\begin{center}
+    \young(6\hfill,5\hfill \hfill,4\hfill \hfill \hfill,3\hfill \hfill \hfill \hfill,2\hfill \hfill \hfill \hfill \hfill,1BABABB,\hfill bababb) \\
+    Table 9: First Row Filled
+\end{center}
+
+\paragraph{The following table are as follows:}
+\clearpage
+%row 2 problem 2
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|>{\centering\arraybackslash}p{1.6cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{3cm}|}
+    \hline
+                                & s                 & substring of s & derivated from & Cartesian Product & In grammar? Where? \\ \hline
+    \multirow{2}{*}{row[2][0]}  &\multirow{2}{*}{ba}&     b           &     B           & \multirow{2}{*}{BA} & \multirow{2}{*}{\{S\}}  \\ \cline{3-4}
+                                &                   &       a         &      A          &                     &                      \\ \hline
+    \multirow{2}{*}{row[2][1]}  &\multirow{2}{*}{ab} &       a         &     A           & \multirow{2}{*}{AB} & \multirow{2}{*}{\{S\}}  \\ \cline{3-4}
+                                &                    &          b      &       B         &                   &                    \\ \hline 
+    \multirow{2}{*}{row[2][2]}  &\multirow{2}{*}{ba}&     b           &     B           & \multirow{2}{*}{BA} & \multirow{2}{*}{\{S\}}  \\ \cline{3-4}
+                                &                   &       a         &      A          &                     &                      \\ \hline
+    \multirow{2}{*}{row[2][3]}  &\multirow{2}{*}{ab} &       a         &     A           & \multirow{2}{*}{AB} & \multirow{2}{*}{\{S\}}  \\ \cline{3-4}
+                                &                    &          b      &       B         &                   &                    \\ \hline    
+    \multirow{2}{*}{row[2][4]}  &\multirow{2}{*}{bb} &       b         &     B           & \multirow{2}{*}{BB} & \multirow{2}{*}{$\emptyset$}  \\ \cline{3-4}
+                                &                    &       b         &       B         &                   &                    \\ \hline       
+    \end{tabular}
+\end{table}
+
+%row 3 problem 2
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|>{\centering\arraybackslash}p{1.7cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{3cm}|}
+    \hline
+                                & s                   & substring of s & derivated from  & Cartesian Product            & In grammar? Where?       \\ \hline
+    \multirow{2}{*}{row[3][0]}  &\multirow{2}{*}{bab} &     b, ab      &     B, S        &         \{BS\}               & \multirow{2}{*}{\{C\}}    \\ \cline{3-5}
+                                &                     &     ba, b      &     S, B        &         \{SB\}               &                           \\ \hline
+    \multirow{2}{*}{row[3][1]}  &\multirow{2}{*}{aba} &     a, ba      &     A, S        &         \{AS\}               & \multirow{2}{*}{\{D\}}  \\ \cline{3-5}
+                                &                     &     ab, a      &     S, A        &         \{SA\}               &                            \\ \hline 
+    \multirow{2}{*}{row[3][2]}  &\multirow{2}{*}{bab} &     b, ab      &     B, S        &         \{BS\}               & \multirow{2}{*}{\{C\}}  \\ \cline{3-5}
+                                &                     &     ba, b      &     S, B        &         \{SB\}               &                      \\ \hline
+    \multirow{2}{*}{row[3][3]}  &\multirow{2}{*}{abb} &     a, bb      &  A, $\emptyset$ &       $\emptyset$            & \multirow{2}{*}{\{C\}}  \\ \cline{3-5}
+                                &                     &     ab, b      &     S, B        &         \{SB\}               &                    \\ \hline    
+    \end{tabular}
+\end{table}
+
+\clearpage
+
+%row 4 problem 2
+\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+                               &         s             & substring of s & derivated from & Cartesian Product & In grammar?        & Where?                           \\ \hline
+    \multirow{3}{*}{row[4][0]} & \multirow{3}{*}{baba} & b, aba         & B, D           &    \{BD\}           &  \{S\}           & \multirow{3}{*}{\{S\}}           \\ \cline{3-6}
+                               &                       & ba, ba         & S, S           &    \{SS\}           &  \{S\}           &                                  \\ \cline{3-6}
+                               &                       & bab, a         & C, A           &    \{CA\}           &  \{$\emptyset$\} &                                  \\ \hline
+    \multirow{3}{*}{row[4][1]} & \multirow{3}{*}{abab} & a, bab         & A, C           &    \{AC\}           &  \{S\}           & \multirow{3}{*}{\{S\}}           \\ \cline{3-6}
+                               &                       & ab, ab         & S, S           &    \{SS\}           &  \{S\}           &                                  \\ \cline{3-6}
+                               &                       & aba, b         & D, B           &    \{$\emptyset$\}  &  \{$\emptyset$\} &                                  \\ \hline
+    \multirow{3}{*}{row[4][2]} & \multirow{3}{*}{babb} & b, abb         & B, C           &    \{BC\}           &  \{$\emptyset$\} & \multirow{3}{*}{\{$\emptyset$\}} \\ \cline{3-6}
+                               &                       & ba, bb         & S, $\emptyset$ &    \{$\emptyset$\}  &  \{$\emptyset$\} &                                  \\ \cline{3-6}
+                               &                       & bab, b         & C, A           &    \{CA\}           &  \{$\emptyset$\} &                                   \\ \hline
+    \end{tabular}%
+}
+\\[2em]
+
+%row 5 problem 2
+\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+                               &       s                & substrings of s & derivated from  & Carteisan Product & In Grammar?     & Final                  \\ \hline
+    \multirow{4}{*}{row[5][0]} & \multirow{4}{*}{babab} &  b, abab        &  B, S           &   \{BS\}          & \{$\emptyset$\} & \multirow{4}{*}{C} \\ \cline{3-6}
+                               &                        &  ba, bab        &  S, C           &   \{SC\}          & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                        &  bab, ab        &  C, S           &   \{CS\}          & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                        &  baba, b        &  S, B           &   \{SB\}          & \{C\}           &                   \\ \hline
+    \multirow{4}{*}{row[5][1]} & \multirow{4}{*}{ababb} &  a, babb        &  A, $\emptyset$ &   \{$\emptyset$\} & \{$\emptyset$\} & \multirow{4}{*}{C} \\ \cline{3-6}
+                               &                        &  ab, abb        &  S, C           &   \{SC\}          & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                        &  aba, bb        &  D, $\emptyset$ &   \{$\emptyset$\} & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                        &  abab, b        &  S, B           &   \{SB\}          & \{C\}           &                   \\ \hline
+    \end{tabular}%
+}
+\paragraph{\\}
+
+%row 6 problem 2
+\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+                               &       s                 & substrings of s & derivated from  & Carteisan Product & In Grammar?     & Final                  \\ \hline
+    \multirow{5}{*}{row[6][0]} & \multirow{5}{*}{bababb} & b, ababb        &  B, C           & \{BC\}            & \{$\emptyset$\} & \multirow{5}{*}{\{$\emptyset$\}} \\ \cline{3-6}
+                               &                         & ba, babb        &  S, $\emptyset$ & \{$\emptyset$\}   & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                         & bab, abb        &  C, C           & \{CC\}            & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                         & baba, bb        &  S, $\emptyset$ & \{$\emptyset$\}   & \{$\emptyset$\} &                   \\ \cline{3-6}
+                               &                         & babab, b        &  C, B           & \{CB\}            & \{$\emptyset$\} &                   \\ \hline
+    \end{tabular}%
+}
+
+\begin{center}
+    \young(6\emptyset,5CC,4SS\emptyset,3CDCC,2SSSS\emptyset,1BABABB,\hfill bababb) \\
+    Table 10: Final Table
+\end{center}
+\paragraph{In conclusion, since row[6] does not contain start variable $S$, then string $bababb \notin L(\mathcal{A})$.}
+
 
 \end{document}
